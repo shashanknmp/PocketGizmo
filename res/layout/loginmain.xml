@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <TextView
+        android:id="@+id/txvAppName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dip"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/appname"
+        android:textSize="55dip"
+        android:textStyle="bold" />
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dip"
+        android:background="@color/viewflipperbg"
+        android:flipInterval="2000" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Pocket Communicator"
+            android:textColor="@color/viewflippertxv"
+            android:textSize="20dip" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Wireless Remote"
+            android:textColor="@color/viewflippertxv"
+            android:textSize="20dip" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Media Player Remote"
+            android:textColor="@color/viewflippertxv"
+            android:textSize="20dip" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="myMoney Tracker"
+            android:textColor="@color/viewflippertxv"
+            android:textSize="20dip" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="In-House Stock Tracker"
+            android:textColor="@color/viewflippertxv"
+            android:textSize="20dip" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Third Eye"
+            android:textColor="@color/viewflippertxv"
+            android:textSize="20dip" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="&amp; More ..."
+            android:textColor="@color/viewflippertxv"
+            android:textSize="20dip" />
+    </ViewFlipper>
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txvFieldUN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:text="Username: "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/edtUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:layout_weight="1"
+                android:hint="@string/usernamehint"
+                android:lines="1"
+                android:maxLength="50"
+                android:textColor="@color/edittext"
+                android:textStyle="bold"
+                android:width="150dip" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txvFieldPWD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:text="Password: "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+                android:layout_weight="1"
+                android:hint="@string/passwordhint"
+                android:inputType="textPassword"
+                android:maxLength="50"
+                android:textColor="@color/edittext"
+                android:textStyle="bold"
+                android:width="150dip" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dip"
+        android:layout_marginTop="10dip"
+        android:gravity="left" >
+
+        <TextView
+            android:id="@+id/txvFieldCTYPE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:text="Connection Type: "
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:src="@drawable/server_connection48x48" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnrLoginButtons"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center|bottom" >
+
+        <Button
+            android:id="@+id/btnLoginOK"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:drawableLeft="@drawable/ok48x48"
+            android:text="@string/btnlogin" />
+
+        <Button
+            android:id="@+id/btnLoginCancel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:drawableRight="@drawable/cancel48x48"
+            android:text="@string/btncancel" />
+    </LinearLayout>
+
+</LinearLayout>

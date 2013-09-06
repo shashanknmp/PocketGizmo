@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+    Used in dialog list of connections (LoginActivity) 
+    <string-array name="select_connection_items">
+        <item>GPRS</item>
+        <item>Bluetooth</item>
+        <item>Wi-Fi</item>
+        <item>USB</item>
+        <item>Go Offline</item>
+    </string-array>
+    -->
+
+</resources>

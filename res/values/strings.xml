@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, PocketGizmoActivity!</string>
+    <string name="app_name">PocketGizmo</string>
+    <string name="btnlogin">Login</string>
+    <string name="btncancel">Cancel</string>
+    <string name="usernamehint">Enter Username</string>
+    <string name="passwordhint">Enter Password</string>
+
+    <!-- Main Menu item list -->
+    <string name="mmenu_item1">Pocket Communicator</string>
+    <string name="mmenu_item2">Wireless Remote</string>
+    <string name="mmenu_item3">Media Player Remote</string>
+    <string name="mmenu_item4">myMoney Tracker</string>
+    <string name="mmenu_item5">In-House Stocks</string>
+    <string name="mmenu_item6">Third Eye</string>
+
+    <string-array name="server_connection_list">
+        <item>GPRS</item>
+        <item>Bluetooth</item>
+        <item>Wi-Fi</item>
+        <item>USB</item>
+        <item>Go Offline</item>
+    </string-array>
+    <string-array name="server_connection_list_icons">
+        <item>@drawable/appicon</item>
+        <item>@drawable/bgappname</item>
+        <item>@drawable/pocket_messenger48x48</item>
+        <item>@drawable/wireless_remote128x128</item>
+        <item>@drawable/wifi200px</item>
+    </string-array>
+
+</resources>
