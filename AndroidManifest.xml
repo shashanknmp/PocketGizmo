@@ -7,11 +7,11 @@
     <uses-sdk android:minSdkVersion="7" />
 
     <application
-        android:name=".pocketgizmo.PocketGizmoApplication"
+        android:name="com.pg.PocketGizmo.PocketGizmoApplication"
         android:icon="@drawable/appicon"
         android:label="@string/app_name" >
         <activity
-            android:name=".pocketgizmo.PocketGizmoActivity"
+            android:name="com.pg.PocketGizmo.PocketGizmoActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".pocketgizmo.LoginActivity"
+            android:name="com.pg.PocketGizmo.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".pocketgizmo.MainMenuActivity"
+            android:name="com.pg.PocketGizmo.MainMenuActivity"
             android:label="@string/app_name" >
         </activity>
     </application>

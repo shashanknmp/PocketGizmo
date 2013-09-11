@@ -1,4 +1,4 @@
-package com.pg.pocketgizmo;
+package com.pg.PocketGizmo;
 
 import android.app.Activity;
 import android.app.Dialog;

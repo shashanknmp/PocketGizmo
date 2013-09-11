@@ -2,7 +2,7 @@ package com.pg.data;
 
 import java.util.Currency;
 
-import com.pg.pocketgizmo.PocketGizmoApplication;
+import com.pg.PocketGizmo.PocketGizmoApplication;
 
 import android.content.ContentValues;
 import android.database.Cursor;

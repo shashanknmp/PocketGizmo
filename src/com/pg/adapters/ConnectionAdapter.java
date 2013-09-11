@@ -16,8 +16,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.pg.R;
-import com.pg.pocketgizmo.CheckNetwork;
-import com.pg.pocketgizmo.PocketGizmoApplication;
+import com.pg.PocketGizmo.CheckNetwork;
+import com.pg.PocketGizmo.PocketGizmoApplication;
 
 public class ConnectionAdapter extends ArrayAdapter<String> implements
 		OnClickListener {
