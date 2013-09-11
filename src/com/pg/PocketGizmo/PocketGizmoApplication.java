@@ -30,6 +30,7 @@ public class PocketGizmoApplication extends Application {
 	private Typeface fntFormFields;
 	private int deviceWidth, deviceHeight, deviceDensityDpi;
 	private float deviceDensity;
+	private boolean logging = false;
 
 	public static PocketGizmoApplication getInstance() {
 		return sInstance;
@@ -416,6 +417,20 @@ public class PocketGizmoApplication extends Application {
 			Log.i(TAG, "OFFLINE");
 
 			return false;
+		}
+	}
+
+	public boolean isLogging() {
+		return logging;
+	}
+
+	public void setLogging(boolean logging) {
+		this.logging = logging;
+	}
+
+	public void logMe(String TAG, String strMessage) {
+		if (isLogging() == true) {
+			Log.i(TAG, strMessage);
 		}
 	}
 }

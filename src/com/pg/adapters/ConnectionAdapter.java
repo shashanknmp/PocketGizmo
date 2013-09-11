@@ -43,7 +43,7 @@ public class ConnectionAdapter extends ArrayAdapter<String> implements
 		getApplicationObject();
 		// this.layoutResourceId = layoutResourceId;
 		// this.textViewResourceId = textViewResourceId;
-		Log.i(TAG, "constructor called");
+		pgAppObj.logMe(TAG, "----> ConntectionAdapter()");
 
 	}
 
@@ -57,7 +57,7 @@ public class ConnectionAdapter extends ArrayAdapter<String> implements
 
 		if (convertView == null) {
 
-			Log.i("getView", "position = " + position);
+			pgAppObj.logMe(TAG + " getView()", "position = " + position);
 
 			LayoutInflater inflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -91,9 +91,7 @@ public class ConnectionAdapter extends ArrayAdapter<String> implements
 
 					@Override
 					public void onClick(View v) {
-						// TODO Auto-generated method stub	
-						Log.i(TAG, "Button clicked");
-						// ((Button) v).setText(" OK ");
+						// TODO Auto-generated method stub
 						((Button) v).setVisibility(View.GONE);
 						pgbConnection.setVisibility(View.VISIBLE);
 
@@ -171,5 +169,4 @@ public class ConnectionAdapter extends ArrayAdapter<String> implements
 			pgAppObj = PocketGizmoApplication.getInstance();
 		}
 	}
-
 }

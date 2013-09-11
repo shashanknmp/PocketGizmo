@@ -23,12 +23,21 @@
         <item>USB</item>
         <item>Go Offline</item>
     </string-array>
+    
     <string-array name="server_connection_list_icons">
         <item>@drawable/appicon</item>
         <item>@drawable/bgappname</item>
         <item>@drawable/pocket_messenger48x48</item>
         <item>@drawable/wireless_remote128x128</item>
         <item>@drawable/wifi200px</item>
+    </string-array>
+
+    <string-array name="mymoneymenu">
+        <item>Record Expense</item>
+        <item>Record Income</item>
+        <item>Show All Record(s)</item>
+        <item>Search</item>
+        <item>Reports</item>
     </string-array>
 
 </resources>
