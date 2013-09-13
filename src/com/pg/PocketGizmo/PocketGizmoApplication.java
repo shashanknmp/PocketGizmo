@@ -30,7 +30,7 @@ public class PocketGizmoApplication extends Application {
 	private Typeface fntFormFields;
 	private int deviceWidth, deviceHeight, deviceDensityDpi;
 	private float deviceDensity;
-	private boolean logging = false;
+	private boolean logging = true;
 
 	public static PocketGizmoApplication getInstance() {
 		return sInstance;

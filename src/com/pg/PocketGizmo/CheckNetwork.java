@@ -8,8 +8,9 @@ import android.widget.Toast;
 
 public class CheckNetwork {
 
+	private final String TAG = getClass().getName();
+	private PocketGizmoApplication pgAppObj;
 	private Context context;
-	private final String TAG = "CheckNetwork";
 
 	public CheckNetwork(Context context) {
 		this.context = context;
@@ -30,13 +31,13 @@ public class CheckNetwork {
 		NetworkInfo[] networkInfo = cm.getAllNetworkInfo();
 		for (int i = 0; i < networkInfo.length; i++) {
 
-			Log.i(TAG, "getTypeName = " + networkInfo[i].getTypeName());
-			Log.i(TAG, "getType() = " + networkInfo[i].getType());
-			Log.i(TAG, "getState() = " + networkInfo[i].getState());
-			Log.i(TAG, "getExtraInfo = " + networkInfo[i].getExtraInfo());
-			Log.i(TAG, "getReason() = " + networkInfo[i].getReason());
-			Log.i(TAG, "=============================================");
-			Log.i(TAG, "=============================================");
+			pgAppObj.logMe(TAG, "getTypeName = " + networkInfo[i].getTypeName());
+			pgAppObj.logMe(TAG, "getType() = " + networkInfo[i].getType());
+			pgAppObj.logMe(TAG, "getState() = " + networkInfo[i].getState());
+			pgAppObj.logMe(TAG, "getExtraInfo = " + networkInfo[i].getExtraInfo());
+			pgAppObj.logMe(TAG, "getReason() = " + networkInfo[i].getReason());
+			pgAppObj.logMe(TAG, "=============================================");
+			pgAppObj.logMe(TAG, "=============================================");
 
 		}
 
@@ -65,5 +66,11 @@ public class CheckNetwork {
 		Toast toast = Toast.makeText(context, "Please Connect To Internet",
 				Toast.LENGTH_LONG);
 		toast.show();
+	}
+
+	private void getApplicationObject() {
+		if (pgAppObj == null) {
+			pgAppObj = PocketGizmoApplication.getInstance();
+		}
 	}
 }

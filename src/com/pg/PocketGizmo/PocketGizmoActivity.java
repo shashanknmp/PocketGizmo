@@ -2,15 +2,12 @@ package com.pg.PocketGizmo;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.pg.R;
-import com.pg.data.DBAdapter;
 import com.pg.data.Login_Master;
 
 public class PocketGizmoActivity extends Activity {
@@ -27,7 +24,6 @@ public class PocketGizmoActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Log.i(TAG, "onCreate()");
 		setContentView(R.layout.pocketgizmomain);
 
 		txvAppName = (TextView) findViewById(R.id.txvAppName);
@@ -46,7 +42,7 @@ public class PocketGizmoActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 
-		Log.i(TAG, "onDestroy()");
+		pgAppObj.logMe(TAG, "onDestroy()");
 	}
 
 	@Override
@@ -54,7 +50,7 @@ public class PocketGizmoActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 
-		Log.i(TAG, "onPause()");
+		pgAppObj.logMe(TAG, "onPause()");
 	}
 
 	@Override
@@ -62,7 +58,7 @@ public class PocketGizmoActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onRestart();
 
-		Log.i(TAG, "onRestart()");
+		pgAppObj.logMe(TAG, "onRestart()");
 	}
 
 	@Override
@@ -70,7 +66,7 @@ public class PocketGizmoActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 
-		Log.i(TAG, "onResume()");
+		pgAppObj.logMe(TAG, "onResume()");
 		Login_Master login = new Login_Master();
 		login.addRecord();
 	}
@@ -80,7 +76,7 @@ public class PocketGizmoActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStart();
 
-		Log.i(TAG, "onStart()");
+		pgAppObj.logMe(TAG, "onStart()");
 	}
 
 	@Override
@@ -88,7 +84,7 @@ public class PocketGizmoActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStop();
 
-		Log.i(TAG, "onStop()");
+		pgAppObj.logMe(TAG, "onStop()");
 	}
 
 	private void checkAvailableConnections() {
@@ -129,12 +125,11 @@ public class PocketGizmoActivity extends Activity {
 		// db.open();
 		// Log.i(TAG, "after db.open()");
 		pgAppObj.get_dbAdapter().close();
-		Log.i(TAG, ">>> db.close()");
+		pgAppObj.logMe(TAG, ">>> db.close()");
 	}
 
 	private void getApplicationObject() {
 		if (pgAppObj == null) {
-			Log.i(TAG, "pgAppObj --> null = true");
 			pgAppObj = PocketGizmoApplication.getInstance();
 		}
 	}

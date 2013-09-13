@@ -11,12 +11,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.pg.R;
+import com.pg.PocketGizmo.PocketGizmoApplication;
 import com.pg.adapters.ConnectionAdapter;
 
 public class ConnectionDialog extends AlertDialog.Builder implements
 		OnClickListener {
 
-	final String TAG = "ConnectionDialog";
+	final String TAG = getClass().getName();
+	private PocketGizmoApplication pgAppObj;
 	Context context;
 	String strTitle;
 
@@ -24,15 +26,15 @@ public class ConnectionDialog extends AlertDialog.Builder implements
 		super(context);
 		// TODO Auto-generated constructor stub
 
-		Log.i(TAG, "before constructor");
+		pgAppObj.logMe(TAG, "before constructor");
 		this.context = context;
 
 		if (strTitle == null || strTitle.equalsIgnoreCase("")) {
-			Log.i(TAG, "null");
+			pgAppObj.logMe(TAG, "null");
 			this.setTitle("Select SERVER connection");
 
 		} else {
-			Log.i(TAG, "not null");
+			pgAppObj.logMe(TAG, "not null");
 			this.setTitle(strTitle);
 
 		}
@@ -45,7 +47,7 @@ public class ConnectionDialog extends AlertDialog.Builder implements
 		//
 		// }
 		show();
-		Log.i(TAG, "after constructor");
+		pgAppObj.logMe(TAG, "after constructor");
 	}
 
 	@Override
@@ -67,6 +69,13 @@ public class ConnectionDialog extends AlertDialog.Builder implements
 	public void onClick(DialogInterface dialog, int which) {
 		// TODO Auto-generated method stub
 
-		Log.i(TAG, "clicked " + which);
+		pgAppObj.logMe(TAG, "clicked " + which);
 	}
+
+	private void getApplicationObject() {
+		if (pgAppObj == null) {
+			pgAppObj = PocketGizmoApplication.getInstance();
+		}
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.pg.animations;
 
+import com.pg.PocketGizmo.PocketGizmoApplication;
+
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
@@ -9,8 +11,9 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
-public class Animations {
+public class Animations extends Animation {
 	private final String TAG = getClass().getName();
+	private PocketGizmoApplication pgAppObj;
 	private Context context;
 	private View view;
 	private int iAnimation_Effect;
@@ -24,6 +27,8 @@ public class Animations {
 		this.context = context;
 		this.view = view;
 		this.iAnimation_Effect = iAnimation_Effect;
+
+		getApplicationObject();
 
 		switch (iAnimation_Effect) {
 		case EFFECTS.ZOOM_IN_EFFECT:
@@ -54,7 +59,7 @@ public class Animations {
 		anim.setDuration(getAnimDuration());
 		// Toast.makeText(context, "" + lAnimDuration,
 		// Toast.LENGTH_SHORT).show();
-		Log.i(TAG, "" + lAnimDuration);
+		pgAppObj.logMe(TAG, "" + lAnimDuration);
 		anim.setRepeatCount(getRepeatCount());
 		view.startAnimation(anim);
 
@@ -159,4 +164,17 @@ public class Animations {
 		this.iRepeatMode = iRepeatMode;
 	}
 
+	public Animation getAnim() {
+		return anim;
+	}
+
+	public void setAnim(Animation anim) {
+		this.anim = anim;
+	}
+
+	private void getApplicationObject() {
+		if (pgAppObj == null) {
+			pgAppObj = PocketGizmoApplication.getInstance();
+		}
+	}
 }

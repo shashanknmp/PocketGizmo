@@ -8,9 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pg.R;
 import com.pg.animations.Animations;
 import com.pg.animations.EFFECTS;
-import com.pg.R;
 
 public class MainMenuAdapter extends BaseAdapter {
 	private final String TAG = getClass().getName();
@@ -67,9 +67,14 @@ public class MainMenuAdapter extends BaseAdapter {
 					.findViewById(R.id.txvItemTitle);
 			txvItemTitle.setText(mainmenuItems[position]);
 
-			Animations anim = new Animations();
-			anim.setAnimDuration(300);
-			anim.startAnimation(context, convertView, EFFECTS.ZOOM_IN_EFFECT);
+			 Animations anim = new Animations();
+			 anim.setAnimDuration(300);
+			 anim.startAnimation(context, convertView,
+			 EFFECTS.ZOOM_IN_EFFECT);
+
+//			CopyOfAnimations.getInstance().setAnimDuration(300);
+//			CopyOfAnimations.getInstance().startAnimation(context, convertView,
+//					EFFECTS.ZOOM_IN_EFFECT);
 		}
 		return convertView;
 	}

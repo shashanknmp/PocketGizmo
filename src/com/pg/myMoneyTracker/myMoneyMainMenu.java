@@ -18,7 +18,7 @@ import com.pg.PocketGizmo.PocketGizmoApplication;
  * 
  */
 public class myMoneyMainMenu extends ListActivity {
-	private final String TAG = "myMoneyMainMenu";
+	private final String TAG = getClass().getName();
 	private PocketGizmoApplication pgAppObj;
 
 	/**
@@ -49,7 +49,7 @@ public class myMoneyMainMenu extends ListActivity {
 		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
 
-		v.setBackgroundResource(R.drawable.appicon);
+		pgAppObj.logMe(TAG, "item selected");
 	}
 
 	private void getApplicationObject() {

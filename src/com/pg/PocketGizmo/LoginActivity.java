@@ -7,12 +7,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
@@ -104,13 +102,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onResume();
 
-		Log.i(TAG, "onResume()");
+		pgAppObj.logMe(TAG, "onResume()");
 		// device resolution
 
-		Log.i(TAG, "\n");
-		Log.i(TAG, "\n");
-		Log.i(TAG, "Width = " + pgAppObj.get_deviceWidth());
-		Log.i(TAG, "Height = " + pgAppObj.get_deviceHeight());
+		pgAppObj.logMe(TAG, "\n");
+		pgAppObj.logMe(TAG, "\n");
+		pgAppObj.logMe(TAG, "Width = " + pgAppObj.get_deviceWidth());
+		pgAppObj.logMe(TAG, "Height = " + pgAppObj.get_deviceHeight());
 	}
 
 	@Override
@@ -118,7 +116,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onPause();
 
-		Log.i(TAG, "onPause()");
+		pgAppObj.logMe(TAG, "onPause()");
 	}
 
 	@Override
@@ -147,20 +145,21 @@ public class LoginActivity extends Activity implements OnClickListener {
 			// finish();
 			Login_Master login = new Login_Master();
 			Cursor c = login.getAllRecords();
-			Log.i(TAG, "Total Record(s):  " + c.getCount());
-			Log.i(TAG, "Total Columns:  " + c.getColumnCount());
+			pgAppObj.logMe(TAG, "Total Record(s):  " + c.getCount());
+			pgAppObj.logMe(TAG, "Total Columns:  " + c.getColumnCount());
 
 			int index;
 
 			if (c.moveToFirst()) {
 				do {
-					Log.i(TAG,
+					pgAppObj.logMe(TAG,
 							"====================================================");
 					for (index = 0; index < c.getColumnCount(); index++) {
-						Log.i(TAG, "cursor---> " + c.getColumnName(index)
-								+ ">>" + c.getString(index));
+						pgAppObj.logMe(TAG,
+								"cursor---> " + c.getColumnName(index) + ">>"
+										+ c.getString(index));
 					}
-					Log.i(TAG,
+					pgAppObj.logMe(TAG,
 							"====================================================");
 
 					// Log.i(TAG, "cursor---> " + c.getString(1));
@@ -176,7 +175,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			c.close();
 
 			// now delete all records
-			Log.i(TAG, "deleted =====" + login.deleteAllRecords());
+			pgAppObj.logMe(TAG, "deleted =====" + login.deleteAllRecords());
 
 		} else if (v == imgButton1) {
 			showDialog(SHOW_CONNECTION_DIALOG);
@@ -193,14 +192,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 				MainMenuActivity.class);
 		startActivity(mainMenuIntent);
 
-	}
-
-	private void getApplicationObject() {
-		Log.i(TAG, "getApplicationObject()");
-
-		if (pgAppObj == null) {
-			pgAppObj = PocketGizmoApplication.getInstance();
-		}
 	}
 
 	@Override
@@ -227,5 +218,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void getApplicationObject() {
+		if (pgAppObj == null) {
+			pgAppObj = PocketGizmoApplication.getInstance();
+		}
 	}
 }

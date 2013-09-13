@@ -100,11 +100,11 @@ public class ConnectionAdapter extends ArrayAdapter<String> implements
 						if (obj.checkInternetConnection(0) == true) {
 							// if (PocketGizmoApplication.getInstance()
 							// .checkInternetConnection() == true) {
-							Log.i(TAG, "ONLINE");
+							pgAppObj.logMe(TAG, "ONLINE");
 							pgbConnection.setVisibility(View.GONE);
 
 						} else {
-							Log.i(TAG, "OFFLINE");
+							pgAppObj.logMe(TAG, "OFFLINE");
 							// pgbConnection.setVisibility(View.GONE);
 							// ((Button) v).setVisibility(View.VISIBLE);
 
@@ -123,7 +123,7 @@ public class ConnectionAdapter extends ArrayAdapter<String> implements
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 
-					Log.i(TAG, "" + ((RadioButton) v).getId());
+					pgAppObj.logMe(TAG, "" + ((RadioButton) v).getId());
 
 					if (position != ConnectionAdapter.this.position
 							&& ConnectionAdapter.this.radSelect != null) {
@@ -154,10 +154,10 @@ public class ConnectionAdapter extends ArrayAdapter<String> implements
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 
-		Log.i(TAG, "some click event on row");
+		pgAppObj.logMe(TAG, "some click event on row");
 
 		if (v instanceof Button) {
-			Log.i(TAG, "Button clicked");
+			pgAppObj.logMe(TAG, "Button clicked");
 			v.setVisibility(View.GONE);
 
 		}
@@ -165,7 +165,6 @@ public class ConnectionAdapter extends ArrayAdapter<String> implements
 
 	private void getApplicationObject() {
 		if (pgAppObj == null) {
-			Log.i(TAG, "pgAppObj --> null = true");
 			pgAppObj = PocketGizmoApplication.getInstance();
 		}
 	}

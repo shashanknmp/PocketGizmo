@@ -1,5 +1,7 @@
 package com.pg.data;
 
+import com.pg.PocketGizmo.PocketGizmoApplication;
+
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,7 +13,8 @@ public class DBAdapter {
 	// public static final String KEY_NAME = "name";
 	// public static final String KEY_EMAIL = "email";
 
-	private final String TAG = "DBAdapter";
+	private final String TAG = getClass().getName();
+	private PocketGizmoApplication pgAppObj;
 	private static final String DATABASE_NAME = "PocketGizmoDB";
 
 	// private String Table_Login = "Login_Master";
@@ -100,7 +103,7 @@ public class DBAdapter {
 	}
 
 	private static class DatabaseHelper extends SQLiteOpenHelper {
-		private final String TAG = "DatabaseHelper";
+		private final String TAG = getClass().getName();
 
 		DatabaseHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -108,7 +111,7 @@ public class DBAdapter {
 
 		@Override
 		public void onCreate(SQLiteDatabase sqlDB) {
-			Log.i(TAG, "onCreate()");
+			// DBAdapter.this.pgAppObj.logMe(TAG, "onCreate()");
 
 			try {
 				// db.execSQL(DATABASE_CREATE);
@@ -116,7 +119,7 @@ public class DBAdapter {
 
 				sqlDB.execSQL(Login_Master.Table_CREATE);
 				sqlDB.execSQL(myMoney_Transaction_Master.Table_CREATE);
-				
+
 				// db.execSQL(myBank_Master.Table_CREATE);
 				// db.execSQL(myBank_Transaction_Master.Table_CREATE);
 				// db.execSQL(Category_Master.Table_CREATE);
@@ -126,15 +129,16 @@ public class DBAdapter {
 				// db.execSQL(Stock_Transaction_Master.Table_CREATE);
 
 			} catch (SQLException e) {
-				Log.i(TAG, "Err: " + e.toString());
+				// pgAppObj.logMe(TAG, "Err: " + e.toString());
 			}
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase sqlDB, int oldVersion,
 				int newVersion) {
-			Log.i(TAG, "Upgrading database from version " + oldVersion + " to "
-					+ newVersion + ", which will destroy all old data");
+			// pgAppObj.logMe(TAG, "Upgrading database from version " +
+			// oldVersion
+			// + " to " + newVersion + ", which will destroy all old data");
 			sqlDB.execSQL("DROP TABLE IF EXISTS contacts");
 			onCreate(sqlDB);
 		}
@@ -189,4 +193,10 @@ public class DBAdapter {
 	// return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) >
 	// 0;
 	// }
+	private void getApplicationObject() {
+		if (pgAppObj == null) {
+			pgAppObj = PocketGizmoApplication.getInstance();
+		}
+	}
+
 }
