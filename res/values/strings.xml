@@ -32,7 +32,7 @@
         <item>@drawable/wifi200px</item>
     </string-array>
 
-    <string-array name="mymoneymenu">
+    <string-array name="mymoneymainmenu">
         <item>Record Expense</item>
         <item>Record Income</item>
         <item>Show All Record(s)</item>
