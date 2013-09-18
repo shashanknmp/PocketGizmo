@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.pg.R;
 import com.pg.adapters.MainMenuAdapter;
 import com.pg.animations.Animations;
-import com.pg.animations.CopyOfAnimations;
 import com.pg.animations.EFFECTS;
 import com.pg.myMoneyTracker.myMoneyMainMenu;
 
@@ -74,7 +73,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener,
 
 		case 3:
 			Toast.makeText(this, "MYT", Toast.LENGTH_SHORT).show();
-			// onAnimationEnd(null);
+			onAnimationEnd(null);
 			break;
 
 		case 4:

@@ -16,6 +16,7 @@
     <string name="mmenu_item5">In-House Stocks</string>
     <string name="mmenu_item6">Third Eye</string>
 
+    <!-- string for connection list -->
     <string-array name="server_connection_list">
         <item>GPRS</item>
         <item>Bluetooth</item>
@@ -23,7 +24,8 @@
         <item>USB</item>
         <item>Go Offline</item>
     </string-array>
-    
+
+    <!-- icons for connection list -->
     <string-array name="server_connection_list_icons">
         <item>@drawable/appicon</item>
         <item>@drawable/bgappname</item>
@@ -32,12 +34,21 @@
         <item>@drawable/wifi200px</item>
     </string-array>
 
+    <!-- myMoney Tracker main menu -->
     <string-array name="mymoney_main_menu">
         <item>Record Expense</item>
         <item>Record Income</item>
         <item>Show All Record(s)</item>
         <item>Search</item>
         <item>Reports</item>
+    </string-array>
+
+    <!-- myMoney Tracker reports menu -->
+    <string-array name="mmy_reports_menu">
+        <item>Date-wise Report</item>
+        <item>Category-wise Report</item>
+        <item>Month-wise Report</item>
+        <item>Year-wise Report</item>
     </string-array>
 
 </resources>
