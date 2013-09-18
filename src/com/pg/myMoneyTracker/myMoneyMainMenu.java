@@ -37,7 +37,7 @@ public class myMoneyMainMenu extends ListActivity {
 		pgAppObj.logMe(TAG, "onCreate()");
 
 		String strMainMenu[] = getResources().getStringArray(
-				R.array.mymoneymenu);
+				R.array.mymoney_main_menu);
 
 		ArrayAdapter<String> arrStrMenu = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, strMainMenu);
