@@ -4,6 +4,7 @@
     <string name="hello">Hello World, PocketGizmoActivity!</string>
     <string name="app_name">PocketGizmo</string>
     <string name="btnlogin">Login</string>
+    <string name="btnok">OK</string>
     <string name="btncancel">Cancel</string>
     <string name="usernamehint">Enter Username</string>
     <string name="passwordhint">Enter Password</string>
@@ -50,4 +51,4 @@
         <item>Month-wise Report</item>
         <item>Year-wise Report</item>
     </string-array>
-</resources>
+</resources>

@@ -24,6 +24,7 @@ public class PocketGizmoActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		setTitleColor(getResources().getColor(R.color.title));
 		setContentView(R.layout.pocketgizmomain);
 
 		txvAppName = (TextView) findViewById(R.id.txvAppName);

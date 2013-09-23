@@ -15,7 +15,7 @@ import com.pg.R;
 import com.pg.adapters.MainMenuAdapter;
 import com.pg.animations.Animations;
 import com.pg.animations.EFFECTS;
-import com.pg.myMoneyTracker.myMoneyMainMenu;
+import com.pg.myMoneyTracker.MMY_MainMenu;
 
 public class MainMenuActivity extends Activity implements OnItemClickListener,
 		AnimationListener {
@@ -26,6 +26,9 @@ public class MainMenuActivity extends Activity implements OnItemClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+
+		setTitle(getResources().getString(R.string.app_name) + " - MainMenu");
+		setTitleColor(getResources().getColor(R.color.title));
 		setContentView(R.layout.mainmenu);
 
 		getApplicationObject();
@@ -94,7 +97,7 @@ public class MainMenuActivity extends Activity implements OnItemClickListener,
 		Intent startApp;
 
 		pgAppObj.logMe(TAG, "animation ended");
-		startApp = new Intent(this, myMoneyMainMenu.class);
+		startApp = new Intent(this, MMY_MainMenu.class);
 		startActivity(startApp);
 	}
 

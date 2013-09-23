@@ -3,9 +3,9 @@
     android:id="@+id/lnrmainmenu_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="25dip"
     android:background="@drawable/roundedcorners"
     android:gravity="center_horizontal|center_vertical"
-    android:layout_marginTop="25dip"
     android:orientation="vertical" >
 
     <ImageView
@@ -27,6 +27,8 @@
         android:textColor="#FFFFFFFF"
         android:textColorHighlight="#00000000"
         android:textSize="12sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:typeface="monospace" >
+    </TextView>
 
 </LinearLayout>

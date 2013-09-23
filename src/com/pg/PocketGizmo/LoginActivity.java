@@ -52,6 +52,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 		fntFormFields = pgAppObj.get_fntFormFields();
 		fntViewFlipper = pgAppObj.get_fntViewFlipper();
 
+		setTitle("PocketGizmo - Login");
+		setTitleColor(getResources().getColor(R.color.title));
 		setContentView(R.layout.loginmain);
 
 		txvAppName = (TextView) findViewById(R.id.txvAppName);
