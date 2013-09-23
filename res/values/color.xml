@@ -5,5 +5,7 @@
     <color name="viewflipperbg">#66666666</color>
     <color name="viewflippertxv">#FFB062</color>
     <color name="edittext">#800000</color>
-
+    <color name="textHeaderRed">#FFFF0000</color>
+    <color name="textHeaderGreen">#AAFF0000</color>
+    
 </resources>
