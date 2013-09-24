@@ -39,12 +39,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
                 android:gravity="center_vertical|center_horizontal"
+                android:inputType="none"
                 android:textColor="@color/edittext"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:typeface="monospace" >
-
-                <requestFocus />
             </EditText>
 
             <TextView
@@ -62,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
                 android:gravity="center_vertical|center_horizontal"
+                android:inputType="none"
                 android:textColor="@color/edittext"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -77,14 +77,14 @@
                 android:textSize="20sp" >
             </TextView>
 
-            <EditText
-                android:id="@+id/edtMMYpaymentmode"
+            <Spinner
+                android:id="@+id/spnMMYpaymentmode"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
                 android:textColor="@color/edittext"
                 android:textSize="20sp" >
-            </EditText>
+            </Spinner>
 
             <TextView
                 android:id="@+id/txvMMYdescription"
@@ -128,6 +128,7 @@
         </LinearLayout>
     </ScrollView>
 
+    <!--
     <LinearLayout
         android:id="@+id/lnrButtons"
         android:layout_width="fill_parent"
@@ -156,5 +157,8 @@
             android:textStyle="bold"
             android:typeface="monospace" />
     </LinearLayout>
+    -->
+
+    <include layout="@layout/lnr_ok_cancel" />
 
 </LinearLayout>

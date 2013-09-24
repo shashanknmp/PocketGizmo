@@ -12,14 +12,21 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -30,7 +37,8 @@ import com.pg.PocketGizmo.PocketGizmoApplication;
  * @author shashank
  * 
  */
-public class MMY_ExpenseIncome extends Activity implements OnTouchListener, OnClickListener {
+public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
+		OnClickListener {
 	final String TAG = getClass().getName();
 	PocketGizmoApplication pgAppObj;
 
@@ -39,11 +47,14 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener, OnCl
 			txvMMYamount;
 	EditText edtMMYdate, edtMMYtime, edtMMYpaymentmode, edtMMYdescription,
 			edtMMYamount;
+	Button btnSave, btnCancel;
+	Spinner spnMMYpaymentmode;
+
 	int date, month, year;
 	int hour, minutes, seconds;
 	final int date_dialog = 1;
 	final int time_dialog = 2;
-	
+
 	Typeface fntAppTitle, fntFormFields;
 
 	@Override
@@ -69,17 +80,15 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener, OnCl
 		txvMMYtime.setTypeface(fntFormFields);
 
 		edtMMYdate = (EditText) findViewById(R.id.edtMMYdate);
+		edtMMYdate.setInputType(InputType.TYPE_NULL);
 		edtMMYdate.setOnTouchListener(this);
 
 		edtMMYtime = (EditText) findViewById(R.id.edtMMYtime);
+		edtMMYtime.setInputType(InputType.TYPE_NULL);
 		edtMMYtime.setOnTouchListener(this);
 
 		txvMMYpaymentmode = (TextView) findViewById(R.id.txvMMYpaymentmode);
 		txvMMYpaymentmode.setTypeface(fntFormFields);
-
-		edtMMYpaymentmode = (EditText) findViewById(R.id.edtMMYpaymentmode);
-		edtMMYpaymentmode.setTypeface(fntFormFields, Typeface.BOLD);
-		edtMMYpaymentmode.setOnTouchListener(this);
 
 		txvMMYdescription = (TextView) findViewById(R.id.txvMMYdescription);
 		txvMMYdescription.setTypeface(fntFormFields);
@@ -93,6 +102,18 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener, OnCl
 
 		edtMMYamount = (EditText) findViewById(R.id.edtMMYamount);
 		edtMMYamount.setOnTouchListener(this);
+
+		btnSave = (Button) findViewById(R.id.btnOK);
+		btnSave.setText("Save");
+		btnSave.setOnClickListener(this);
+
+		btnCancel = (Button) findViewById(R.id.btnCancel);
+		btnCancel.setOnClickListener(this);
+
+		spnMMYpaymentmode = (Spinner) findViewById(R.id.spnMMYpaymentmode);
+		spnMMYpaymentmode.setAdapter(new ArrayAdapter<String>(this,
+				R.layout.spinner_list, getResources().getStringArray(
+						R.array.mmy_spn_paymentmodes)));
 
 		updateUI();
 	}
@@ -206,6 +227,6 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener, OnCl
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+		finish();
 	}
 }

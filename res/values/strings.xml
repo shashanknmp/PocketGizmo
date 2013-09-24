@@ -51,4 +51,14 @@
         <item>Month-wise Report</item>
         <item>Year-wise Report</item>
     </string-array>
-</resources>
+
+    <!-- myMoney Tracker Payment Mode -->
+    <string-array name="mmy_spn_paymentmodes">
+        <item>CASH</item>
+        <item>Credit Card</item>
+        <item>Debit Card</item>
+        <item>Net Banking</item>
+        <item>BigBazaar Profit Club</item>
+    </string-array>
+
+</resources>

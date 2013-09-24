@@ -92,9 +92,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 		imgButton1 = (ImageButton) findViewById(R.id.imageButton1);
 		imgButton1.setOnClickListener(this);
 
-		btnLoginOK = (Button) findViewById(R.id.btnLoginOK);
+		btnLoginOK = (Button) findViewById(R.id.btnOK);
+		btnLoginOK.setText(R.string.btnlogin);
 		btnLoginOK.setOnClickListener(this);
-		btnLoginCancel = (Button) findViewById(R.id.btnLoginCancel);
+
+		btnLoginCancel = (Button) findViewById(R.id.btnCancel);
 		btnLoginCancel.setOnClickListener(this);
 
 	}

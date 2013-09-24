@@ -168,7 +168,8 @@
             android:src="@drawable/server_connection48x48" />
     </LinearLayout>
 
-    <LinearLayout
+    <!--
+         <LinearLayout
         android:id="@+id/lnrLoginButtons"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -196,5 +197,8 @@
             android:textStyle="bold"
             android:typeface="monospace" />
     </LinearLayout>
+    -->
+
+    <include layout="@layout/lnr_ok_cancel" />
 
 </LinearLayout>
