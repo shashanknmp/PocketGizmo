@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class Login_Master {
 	private PocketGizmoApplication pgAppObj;
-	private DBAdapter dbAdapter;
+	private DBAdapter_OLD_DO_NOT_USE dbAdapter;
 	private SQLiteDatabase sqlDB;
 
 	private static final String TAG = "Login_Master";
@@ -48,8 +48,8 @@ public class Login_Master {
 
 	public Login_Master() {
 		getApplicationObject();
-		dbAdapter = pgAppObj.get_dbAdapter();
-		sqlDB = pgAppObj.get_sqlDB();
+		// dbAdapter = pgAppObj.get_dbAdapter();
+		// sqlDB = pgAppObj.get_sqlDB();
 	}
 
 	/**
@@ -86,10 +86,10 @@ public class Login_Master {
 			newRecord.put(FIELDS[i], "java-" + i);
 		}
 
-		dbAdapter = pgAppObj.get_dbAdapter();
-		if (dbAdapter == null) {
-			Log.i(TAG, "pgAppObj.getDB() = " + pgAppObj.get_dbAdapter());
-		}
+		// dbAdapter = pgAppObj.get_dbAdapter();
+		// if (dbAdapter == null) {
+		// Log.i(TAG, "pgAppObj.getDB() = " + pgAppObj.get_dbAdapter());
+		// }
 
 		rowID = sqlDB.insert(TABLE_NAME, null, newRecord);
 
@@ -125,7 +125,6 @@ public class Login_Master {
 
 	private void getApplicationObject() {
 		if (pgAppObj == null) {
-			Log.i(TAG, "pgAppObj --> null = true");
 			pgAppObj = PocketGizmoApplication.getInstance();
 		}
 	}

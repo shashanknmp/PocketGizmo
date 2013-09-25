@@ -13,9 +13,32 @@
     <string name="mmenu_item1">Pocket Communicator</string>
     <string name="mmenu_item2">Wireless Remote</string>
     <string name="mmenu_item3">Media Player Remote</string>
-    <string name="mmenu_item4">myMoney Tracker</string>
+    <string name="mmenu_item4">myMoney-Tracker</string>
     <string name="mmenu_item5">In-House Stocks</string>
-    <string name="mmenu_item6">Third Eye</string>
+    <string name="mmenu_item6">Third-Eye</string>
+    <string name="mmenu_item7">Settings</string>
+
+    <!-- Main Menu item list array -->
+    <string-array name="mainmenu_itemlist">
+        <item>Pocket Communicator</item>
+        <item>Wireless Remote</item>
+        <item>Media Player Remote</item>
+        <item>myMoney-Tracker</item>
+        <item>In-House Stocks</item>
+        <item>Third-Eye</item>
+        <item>Settings</item>
+    </string-array>
+
+    <!-- Main Menu Icon list array -->
+    <string-array name="mainmenu_iconlist">
+        <item>pocket_messenger48x48</item>
+        <item>wireless_remote128x128</item>
+        <item>media_player128x128</item>
+        <item>mymoney48x48</item>
+        <item>stock_tracker128x128</item>
+        <item>third_eye128x128</item>
+        <item>stock_tracker128x128</item>
+    </string-array>
 
     <!-- string for connection list -->
     <string-array name="server_connection_list">
@@ -26,15 +49,16 @@
         <item>Go Offline</item>
     </string-array>
 
-    <!-- icons for connection list -->
+    <!--
+         icons for connection list
     <string-array name="server_connection_list_icons">
         <item>@drawable/appicon</item>
         <item>@drawable/bgappname</item>
         <item>@drawable/pocket_messenger48x48</item>
         <item>@drawable/wireless_remote128x128</item>
         <item>@drawable/wifi200px</item>
-    </string-array>
-
+    </string-array>
+    -->
     <!-- myMoney Tracker main menu -->
     <string-array name="mymoney_main_menu">
         <item>Record Expense</item>
@@ -54,11 +78,56 @@
 
     <!-- myMoney Tracker Payment Mode -->
     <string-array name="mmy_spn_paymentmodes">
-        <item>CASH</item>
+        <item>Cash</item>
         <item>Credit Card</item>
         <item>Debit Card</item>
         <item>Net Banking</item>
         <item>BigBazaar Profit Club</item>
+    </string-array>
+
+    <!-- myMoney Tracker Category List -->
+    <string-array name="mmy_spn_categories">
+        <item>FOOD / SNACKS</item>
+        <item>TRAIN /  BUS</item>
+        <item>TAXI / AUTO RIKSHAW</item>
+        <item>DOCTOR / CHEMIST</item>
+        <item>SCHOOL / EDUCATION</item>
+        <item>CLOTHES / ACCESSORIES</item>
+        <item>HOUSE MAINTENANCE</item>
+        <item>INTOXICANTS / SMOKES</item>
+        <item>GIFTS / TOYS</item>
+        <item>STATIONERY</item>
+        <item>ELECTRONICS / ELECTRICAL</item>
+        <item>BODY SHOP /  PARLOUR</item>
+        <item>ENTERTAINMENT / RIDES</item>
+        <item>INVESTMENTS</item>
+        <item>GOD / DONATIONS</item>
+    </string-array>
+
+    <!-- myMoney Tracker Category icon -->
+    <string-array name="mmy_spn_paymentmode_icon">
+        <item>pocket_messenger48x48</item>
+        <item>pocket_messenger48x48</item>
+        <item>pocket_messenger48x48</item>
+    </string-array>
+
+    <!-- myMoney Tracker Category icon -->
+    <string-array name="mmy_spn_category_icon">
+        <item>wifi48x48</item>
+        <item>pocket_messenger48x48</item>
+        <item>pocket_messenger48x48</item>
+        <item>pocket_messenger48x48</item>
+        <item>pocket_messenger48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
+        <item>wifi48x48</item>
     </string-array>
 
 </resources>

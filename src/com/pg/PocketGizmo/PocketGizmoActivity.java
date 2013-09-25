@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.newrelic.agent.android.NewRelic;
 import com.pg.R;
-import com.pg.data.Login_Master;
 
 public class PocketGizmoActivity extends Activity {
 
@@ -24,18 +24,20 @@ public class PocketGizmoActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		getApplicationObject();
 		setTitleColor(getResources().getColor(R.color.title));
 		setContentView(R.layout.pocketgizmomain);
+
+		newrelicAgent();
 
 		txvAppName = (TextView) findViewById(R.id.txvAppName);
 		// set font now
 
-		getApplicationObject();
 		txvAppName.setText(txvAppName.getText() + " "
 				+ pgAppObj.getVersionCode());
 
 		checkAvailableConnections();
-		// checkDatabases();
+		checkDatabases();
 	}
 
 	@Override
@@ -68,8 +70,8 @@ public class PocketGizmoActivity extends Activity {
 		super.onResume();
 
 		pgAppObj.logMe(TAG, "onResume()");
-		Login_Master login = new Login_Master();
-		login.addRecord();
+		// Login_Master login = new Login_Master();
+		// login.addRecord();
 	}
 
 	@Override
@@ -120,13 +122,13 @@ public class PocketGizmoActivity extends Activity {
 	}
 
 	private void checkDatabases() {
-		// DBAdapter db = new DBAdapter(this);
-		// Log.i(TAG, "after new DBAdapter()");
-		//
-		// db.open();
-		// Log.i(TAG, "after db.open()");
-		pgAppObj.get_dbAdapter().close();
-		pgAppObj.logMe(TAG, ">>> db.close()");
+		// pgAppObj.get_pgOpenHelper().copyDBfromAssets();
+	}
+
+	private void newrelicAgent() {
+		NewRelic.withApplicationToken(
+				"AA7e3a3bdcbb1f7eb9a978e736f653d89eccf257bf").start(
+				this.getApplication());
 	}
 
 	private void getApplicationObject() {

@@ -1,5 +1,7 @@
 package com.pg.PocketGizmo;
 
+import java.util.logging.LogManager;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -21,8 +23,9 @@ import android.widget.ViewFlipper;
 
 import com.pg.R;
 import com.pg.alertdialogs.ConnectionDialog;
-import com.pg.data.DBAdapter;
+import com.pg.data.DBAdapter_OLD_DO_NOT_USE;
 import com.pg.data.Login_Master;
+import com.pg.data.PocketGizmoDBOpenHelper;
 
 public class LoginActivity extends Activity implements OnClickListener {
 
@@ -37,7 +40,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private Button btnLoginOK, btnLoginCancel;
 	private static final int SHOW_CONNECTION_DIALOG = 1;
 
-	private DBAdapter DB = null;
+	private PocketGizmoDBOpenHelper pgOpenHelper;
 	private SQLiteDatabase sqlDB = null;
 
 	private Typeface fntAppTitle, fntFormFields, fntViewFlipper;
@@ -46,8 +49,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		getApplicationObject();
-		DB = pgAppObj.get_dbAdapter();
-		sqlDB = pgAppObj.get_sqlDB();
+		pgOpenHelper = pgAppObj.get_pgOpenHelper();
+		// sqlDB = pgAppObj.get_sqlDB();
 		fntAppTitle = pgAppObj.get_fntAppTitle();
 		fntFormFields = pgAppObj.get_fntFormFields();
 		fntViewFlipper = pgAppObj.get_fntViewFlipper();
@@ -98,7 +101,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 		btnLoginCancel = (Button) findViewById(R.id.btnCancel);
 		btnLoginCancel.setOnClickListener(this);
-
 	}
 
 	@Override
@@ -144,42 +146,43 @@ public class LoginActivity extends Activity implements OnClickListener {
 			finish();
 
 		} else if (v == btnLoginCancel) {
-			// closeAllConnections(); // server disconnect, DB disconnect, BT
-			// disconnect
-			// finish();
-			Login_Master login = new Login_Master();
-			Cursor c = login.getAllRecords();
-			pgAppObj.logMe(TAG, "Total Record(s):  " + c.getCount());
-			pgAppObj.logMe(TAG, "Total Columns:  " + c.getColumnCount());
-
-			int index;
-
-			if (c.moveToFirst()) {
-				do {
-					pgAppObj.logMe(TAG,
-							"====================================================");
-					for (index = 0; index < c.getColumnCount(); index++) {
-						pgAppObj.logMe(TAG,
-								"cursor---> " + c.getColumnName(index) + ">>"
-										+ c.getString(index));
-					}
-					pgAppObj.logMe(TAG,
-							"====================================================");
-
-					// Log.i(TAG, "cursor---> " + c.getString(1));
-					// Log.i(TAG, "cursor---> " + c.getString(2));
-					// Log.i(TAG, "cursor---> " + c.getString(3));
-					// Log.i(TAG, "cursor---> " + c.getString(4));
-					// Log.i(TAG, "cursor---> " + c.getString(5));
-					// Log.i(TAG, "cursor---> " + c.getString(6));
-					// Log.i(TAG, "cursor---> " + c.getString(7));
-					// Log.i(TAG, "cursor---> " + c.getString(8));
-				} while (c.moveToNext());
-			}
-			c.close();
-
-			// now delete all records
-			pgAppObj.logMe(TAG, "deleted =====" + login.deleteAllRecords());
+			pgAppObj.get_pgOpenHelper().deleteDB();
+			// // closeAllConnections(); // server disconnect, DB disconnect, BT
+			// // disconnect
+			// // finish();
+			// Login_Master login = new Login_Master();
+			// Cursor c = login.getAllRecords();
+			// pgAppObj.logMe(TAG, "Total Record(s):  " + c.getCount());
+			// pgAppObj.logMe(TAG, "Total Columns:  " + c.getColumnCount());
+			//
+			// int index;
+			//
+			// if (c.moveToFirst()) {
+			// do {
+			// pgAppObj.logMe(TAG,
+			// "====================================================");
+			// for (index = 0; index < c.getColumnCount(); index++) {
+			// pgAppObj.logMe(TAG,
+			// "cursor---> " + c.getColumnName(index) + ">>"
+			// + c.getString(index));
+			// }
+			// pgAppObj.logMe(TAG,
+			// "====================================================");
+			//
+			// // Log.i(TAG, "cursor---> " + c.getString(1));
+			// // Log.i(TAG, "cursor---> " + c.getString(2));
+			// // Log.i(TAG, "cursor---> " + c.getString(3));
+			// // Log.i(TAG, "cursor---> " + c.getString(4));
+			// // Log.i(TAG, "cursor---> " + c.getString(5));
+			// // Log.i(TAG, "cursor---> " + c.getString(6));
+			// // Log.i(TAG, "cursor---> " + c.getString(7));
+			// // Log.i(TAG, "cursor---> " + c.getString(8));
+			// } while (c.moveToNext());
+			// }
+			// c.close();
+			//
+			// // now delete all records
+			// pgAppObj.logMe(TAG, "deleted =====" + login.deleteAllRecords());
 
 		} else if (v == imgButton1) {
 			showDialog(SHOW_CONNECTION_DIALOG);

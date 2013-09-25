@@ -36,7 +36,7 @@ public class MMY_MainMenu extends ListActivity {
 		getApplicationObject();
 		pgAppObj.logMe(TAG, "onCreate()");
 
-		setTitle("myMoneyMoney Tracker - MainMenu");
+		setTitle("myMoney Tracker - MainMenu");
 		setTitleColor(getResources().getColor(R.color.title));
 
 		String strMainMenu[] = getResources().getStringArray(

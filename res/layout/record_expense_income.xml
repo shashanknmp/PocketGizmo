@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/txvMMYheader"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/textHeaderRed"
         android:gravity="center_horizontal|center_vertical"
@@ -16,13 +16,13 @@
         android:typeface="monospace" />
 
     <ScrollView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <TextView
@@ -79,13 +79,30 @@
 
             <Spinner
                 android:id="@+id/spnMMYpaymentmode"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/edittext"
+                android:textSize="20sp" >
+            </Spinner>
+
+            <TextView
+                android:id="@+id/txvMMYcategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dip"
+                android:text="Category Description:"
+                android:textSize="20sp" >
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spnMMYcategory"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
                 android:textColor="@color/edittext"
                 android:textSize="20sp" >
             </Spinner>
-
+            
             <TextView
                 android:id="@+id/txvMMYdescription"
                 android:layout_width="wrap_content"
@@ -97,7 +114,7 @@
 
             <EditText
                 android:id="@+id/edtMMYdescription"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
                 android:capitalize="sentences"
@@ -116,7 +133,7 @@
 
             <EditText
                 android:id="@+id/edtMMYamount"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dip"
                 android:inputType="numberDecimal"
@@ -131,13 +148,13 @@
     <!--
     <LinearLayout
         android:id="@+id/lnrButtons"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center|bottom" >
 
         <Button
             android:id="@+id/btnMMYOK"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:drawableLeft="@drawable/ok48x48"
@@ -148,7 +165,7 @@
 
         <Button
             android:id="@+id/btnMMYCancel"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:drawableRight="@drawable/cancel48x48"

@@ -21,22 +21,32 @@ public class MainMenuActivity extends Activity implements OnItemClickListener,
 		AnimationListener {
 	private final String TAG = getClass().getName();
 	private PocketGizmoApplication pgAppObj;
+	private GridView gridMainMenu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
+		getApplicationObject();
+
 		setTitle(getResources().getString(R.string.app_name) + " - MainMenu");
 		setTitleColor(getResources().getColor(R.color.title));
 		setContentView(R.layout.mainmenu);
 
-		getApplicationObject();
+		gridMainMenu = (GridView) findViewById(R.id.gridMainMenu);
+	}
 
-		GridView gridMainMenu = (GridView) findViewById(R.id.gridMainMenu);
-		gridMainMenu.setAdapter(new MainMenuAdapter(this));
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+
+		// gridMainMenu.setAdapter(new MainMenuAdapter(this));
+		gridMainMenu.setAdapter(new MainMenuAdapter(this, getResources()
+				.getStringArray(R.array.mainmenu_itemlist), getResources()
+				.getStringArray(R.array.mainmenu_iconlist)));
 		gridMainMenu.setOnItemClickListener(this);
-
 	}
 
 	@Override

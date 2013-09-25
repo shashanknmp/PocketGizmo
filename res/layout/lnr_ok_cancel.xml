@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/lnrButtons"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center|bottom" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <Button
         android:id="@+id/btnOK"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_weight="0.5"
         android:drawableLeft="@drawable/ok48x48"
         android:text="@string/btnok"
@@ -18,8 +18,9 @@
 
     <Button
         android:id="@+id/btnCancel"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_weight="0.5"
         android:drawableRight="@drawable/cancel48x48"
         android:text="@string/btncancel"

@@ -25,7 +25,7 @@ public class ConnectionDialog extends AlertDialog.Builder implements
 	public ConnectionDialog(Context context, String strTitle) {
 		super(context);
 		// TODO Auto-generated constructor stub
-
+		getApplicationObject();
 		pgAppObj.logMe(TAG, "before constructor");
 		this.context = context;
 

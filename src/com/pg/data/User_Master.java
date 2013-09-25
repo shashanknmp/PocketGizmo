@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.pg.data;
 
 import java.util.ArrayList;
@@ -7,34 +10,40 @@ import android.database.Cursor;
 
 import com.pg.PocketGizmo.PocketGizmoApplication;
 
-public class Category_Master {
+/**
+ * @author shashank
+ * 
+ */
+public class User_Master {
 
-	private final String TAG = "Category_Master";
-	private final String TableName = "category_master";
-	public final static int _id = 0;
-	public final static int category_desc = 1;
+	/**
+	 * 
+	 */
+	private final String TAG = "User_Master";
+	private final String TableName = "User_Master";
+
+	public final static int user_photo = 0;
+	public final static int user_account_status = 1;
+	public final static int user_passwd_expiry = 2;
+	public final static int user_email = 3;
+	public final static int user_passwd = 4;
+	public final static int user_username = 5;
+	public final static int user_aadhar = 6;
+	public final static int user_pan = 7;
+	public final static int user_dob = 8;
+	public final static int _id = 9;
+	public final static int user_imei = 10;
+	public final static int user_fname = 11;
+	public final static int user_lname = 12;
+	public final static int user_mname = 13;
 
 	private Context context;
 	private PocketGizmoApplication pgAppObj;
 
-	// public static String Fields[] = { "login_id", "login_fname",
-	// "login_lname",
-	// "login_username", "login_passwsd", "login_email",
-	// "login_account_expiry", "login_account_active", "login_image" };
-	//
-	// public static String Table_Creation_Fields[] = {
-	// "(login_id primary key autoincrement,", "login_fname text,",
-	// "login_lname text,", "login_username text,", "login_passwsd text,",
-	// "login_email text,", "login_account_expiry datetime,",
-	// "login_account_active boolean,", "login_image text);" };
-	//
-	// public static String Table_CREATE = "create table " + TableName
-	// + (Table_Creation_Fields);
-
-	public Category_Master(Context context) {
+	public User_Master(Context context) {
+		// TODO Auto-generated constructor stub
 		getApplicationObject();
 		this.context = context;
-
 	}
 
 	/**
@@ -45,19 +54,6 @@ public class Category_Master {
 		return TableName;
 	}
 
-	/*	*//**
-	 * @return the fields
-	 */
-	/*
-	 * public String[] getFields() { return Fields; }
-	 */
-	/*	*//**
-	 * @param fields
-	 *            the fields to set
-	 */
-	/*
-	 * public void setFields(String[] Fields) { this.Fields = Fields; }
-	 */
 	public Cursor getAllRecords() {
 		Cursor cursorData = pgAppObj.get_pgSQLDB().query(TableName, null, null,
 				null, null, null, null);
@@ -73,14 +69,14 @@ public class Category_Master {
 
 		cursorData = pgAppObj.get_pgSQLDB().query(TableName, null, null, null,
 				null, null, null);
-		
 		cursorData.moveToFirst();
-		while (!cursorData.isAfterLast()) {
 
+		while (!cursorData.isAfterLast()) {
 			mArrayList.add(cursorData.getString(fieldName));
 			cursorData.moveToNext();
 		}
 
+		pgAppObj.logMe(TAG, "size = " + mArrayList.size());
 		strContents = new String[mArrayList.size()];
 		mArrayList.toArray(strContents);
 

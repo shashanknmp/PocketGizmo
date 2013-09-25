@@ -12,26 +12,28 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
-import android.database.DataSetObserver;
+import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.pg.R;
 import com.pg.PocketGizmo.PocketGizmoApplication;
+import com.pg.adapters.MMYspinnerAdapter;
+import com.pg.data.Category_Master;
+import com.pg.data.Payment_Modes;
 
 /**
  * @author shashank
@@ -48,7 +50,7 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
 	EditText edtMMYdate, edtMMYtime, edtMMYpaymentmode, edtMMYdescription,
 			edtMMYamount;
 	Button btnSave, btnCancel;
-	Spinner spnMMYpaymentmode;
+	Spinner spnMMYpaymentmode, spnMMYcategory;
 
 	int date, month, year;
 	int hour, minutes, seconds;
@@ -67,7 +69,7 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
 		fntAppTitle = pgAppObj.get_fntAppTitle();
 		fntFormFields = pgAppObj.get_fntFormFields();
 
-		setTitle("myMoney Tracker Expense / Income");
+		setTitle("myMoney Tracker - Expense / Income");
 		setTitleColor(getResources().getColor(R.color.title));
 		setContentView(R.layout.record_expense_income);
 
@@ -111,9 +113,7 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
 		btnCancel.setOnClickListener(this);
 
 		spnMMYpaymentmode = (Spinner) findViewById(R.id.spnMMYpaymentmode);
-		spnMMYpaymentmode.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.spinner_list, getResources().getStringArray(
-						R.array.mmy_spn_paymentmodes)));
+		spnMMYcategory = (Spinner) findViewById(R.id.spnMMYcategory);
 
 		updateUI();
 	}
@@ -130,17 +130,47 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
 		if (prevIntent.hasExtra("mmy_trans_type")) {
 			if (prevIntent.getStringExtra("mmy_trans_type").contains("expense")) {
 				txvMMYheader.setText("Record Expense");
+				txvMMYheader.setTextColor(getResources().getColor(
+						android.R.color.white));
 				txvMMYheader.setBackgroundColor(getResources().getColor(
 						R.color.textHeaderRed));
 			} else {
 				txvMMYheader.setText("Record Income");
+				txvMMYheader.setTextColor(getResources().getColor(
+						android.R.color.black));
 				txvMMYheader.setBackgroundColor(getResources().getColor(
 						R.color.textHeaderGreen));
-
 			}
 		}
 		getCurrentDateTime();
 		updateCurrentDateTime();
+
+		getPaymentModes();
+		getCategories();
+	}
+
+	private void getPaymentModes() {
+		// spnMMYpaymentmode.setAdapter(new MMYspinnerAdapter(this,
+		// R.id.lnrSpinnerRow, getResources().getStringArray(
+		// R.array.mmy_spn_paymentmodes), getResources()
+		// .getStringArray(R.array.mmy_spn_paymentmode_icon)));
+
+		Payment_Modes objData = new Payment_Modes(this);
+
+		spnMMYpaymentmode
+				.setAdapter(new MMYspinnerAdapter(this, R.id.lnrSpinnerRow,
+						objData.getAllRecordsOfField(Payment_Modes.card_name),
+						getResources().getStringArray(
+								R.array.mmy_spn_paymentmode_icon)));
+	}
+
+	private void getCategories() {
+		Category_Master objData = new Category_Master(this);
+
+		spnMMYcategory.setAdapter(new MMYspinnerAdapter(this,
+				R.id.lnrSpinnerRow, objData
+						.getAllRecordsOfField(Category_Master.category_desc),
+				getResources().getStringArray(R.array.mmy_spn_category_icon)));
 	}
 
 	private void getCurrentDateTime() {
@@ -159,7 +189,7 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
 		pgAppObj.logMe(TAG, "----> updateCurrentDateTime()");
 
 		// set current date
-		edtMMYdate.setText(date + "/" + month + "/" + year);
+		edtMMYdate.setText(date + "/" + (month + 1) + "/" + year);
 
 		// set current time
 		edtMMYtime.setText(hour + ":" + minutes);
@@ -214,19 +244,27 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
 			showDialog(time_dialog);
 
 		}
-
 		return false;
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if (v == btnSave) {	
+			addRecord();
+		} else if (v == btnCancel) {
+			finish();
+		}
+	}
+	
+	private void addRecord()
+	{
+		
 	}
 
 	private void getApplicationObject() {
 		if (pgAppObj == null) {
 			pgAppObj = PocketGizmoApplication.getInstance();
 		}
-	}
-
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		finish();
 	}
 }

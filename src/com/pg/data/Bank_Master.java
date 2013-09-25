@@ -1,9 +1,9 @@
 package com.pg.data;
 
-public class myBank_Transaction_Master {
+public class Bank_Master {
 
-	public static String TAG = "myBank_Transaction_Master";
-	public static String TableName = "myBank_Transaction_Master";
+	public static String TAG = "myBank_Master";
+	public static String TableName = "myBank_Master";
 	
 	public static String Fields[] = { "login_id", "login_fname", "login_lname",
 			"login_username", "login_passwsd", "login_email",
@@ -18,7 +18,7 @@ public class myBank_Transaction_Master {
 	public static String Table_CREATE = "create table " + TableName
 			+ (Table_Creation_Fields);
 
-	public myBank_Transaction_Master() {
+	public Bank_Master() {
 
 	}
 

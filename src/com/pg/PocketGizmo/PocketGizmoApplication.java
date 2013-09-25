@@ -11,7 +11,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
-import com.pg.data.DBAdapter;
+import com.pg.data.DBAdapter_OLD_DO_NOT_USE;
+import com.pg.data.PocketGizmoDBOpenHelper;
 
 public class PocketGizmoApplication extends Application {
 
@@ -22,8 +23,8 @@ public class PocketGizmoApplication extends Application {
 	private String strAppName;
 	private String strSourceDir;
 	private String strDataDir;
-	private DBAdapter dbAdapter; // = new DBAdapter(this);
-	private SQLiteDatabase sqlDB;
+	private PocketGizmoDBOpenHelper pgOpenHelper;
+	private SQLiteDatabase pgSQLDB;
 	private String IMEI;
 	private Typeface fntAppTitle;
 	private Typeface fntViewFlipper;
@@ -60,8 +61,8 @@ public class PocketGizmoApplication extends Application {
 		exposeSourceDir();
 		exposeDataDir();
 
-		expose_dbAdapter();
-		expose_sqlDB();
+		expose_pgOpenHelper();
+		expose_pgSQLDB();
 
 		exposeFontAppTitle();
 		exposeFontFormFields();
@@ -186,26 +187,26 @@ public class PocketGizmoApplication extends Application {
 	}
 
 	/**
-	 * @return the dbAdapater
+	 * @return the pgOpenHelper
 	 */
-	public DBAdapter get_dbAdapter() {
-		return dbAdapter;
+	public PocketGizmoDBOpenHelper get_pgOpenHelper() {
+		return pgOpenHelper;
 	}
 
 	/**
 	 * @param dbAdapter
-	 *            the dbAdapter to set
+	 *            the pgOpenHelper to set
 	 */
-	private void set_dbAdapter(DBAdapter dbAdapter) {
-		this.dbAdapter = dbAdapter;
+	private void set_pgOpenHelper(PocketGizmoDBOpenHelper pgOpenHelper) {
+		this.pgOpenHelper = pgOpenHelper;
 	}
 
-	private void expose_dbAdapter() {
-		Log.i(TAG, "exposeDB()");
+	private void expose_pgOpenHelper() {
+		Log.i(TAG, "expose_pgOpenHelper()");
 
-		set_dbAdapter(new DBAdapter(this));
-		dbAdapter.open();
-		Log.i(TAG, ">>> db.open()");
+		set_pgOpenHelper(new PocketGizmoDBOpenHelper(getApplicationContext(),
+				PocketGizmoDBOpenHelper.DATABASE_NAME, null,
+				PocketGizmoDBOpenHelper.DATABASE_VERSION));
 	}
 
 	/**
@@ -232,24 +233,24 @@ public class PocketGizmoApplication extends Application {
 	}
 
 	/**
-	 * @return the sqlDB
+	 * @return the pgSQLDB
 	 */
-	public SQLiteDatabase get_sqlDB() {
-		return sqlDB;
+	public SQLiteDatabase get_pgSQLDB() {
+		return pgSQLDB;
 	}
 
 	/**
-	 * @param sqlDB
-	 *            the sqlDB to set
+	 * @param pgSQLDB
+	 *            the pgSQLDB to set
 	 */
-	private void set_sqlDB(SQLiteDatabase sqlDB) {
-		this.sqlDB = sqlDB;
+	private void set_pgSQLDB(SQLiteDatabase pgSQLDB) {
+		this.pgSQLDB = pgSQLDB;
 	}
 
-	private void expose_sqlDB() {
+	private void expose_pgSQLDB() {
 		Log.i(TAG, "expose_sqlDB()");
 
-		set_sqlDB(dbAdapter.get_sqlDB());
+		set_pgSQLDB(pgOpenHelper.openDBforWrite());
 	}
 
 	/**
