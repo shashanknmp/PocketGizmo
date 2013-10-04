@@ -1,0 +1,87 @@
+********************************************************************************
+********************************************************************************
+**													**
+**			Pocket Gizmo as on 18/08/2010		 				**
+**		All Home solutions / automations in your pocket			      **
+**	(Communication / Security / Inventory / Accounting)				**
+**													**
+**													**
+********************************************************************************
+********************************************************************************
+
+Abbreviations used:
+
+1> fo2fo = phone to phone communication vice-versa (via bluetooth, GPRS)
+2> fo2s  = phone to server communication vice-versa as applicable (via bluetooth, GPRS)
+3> s2fo = server to phone one-way communication (via bluetooth, GPRS)
+
+porting of mobile applications for:
+1> 128 x 160
+2> 240 x 320
+
+porting of server application for:
+1> 800 x 600
+2> 1024 x 768
+
+JSRs & Technologies that will be used:
+1> Mobile Side: JSR 82, JSR 135, LWUIT, RMS
+2> Server Side: VB6 and various Win32 APIs, SQL Server, Bluetooth API, 
+
+>proper logging of various connections, failures, transfers must be handled.
+
+Pocket Gizmo
+ |
+ |
+ |______SMS (offline)
+ |	    (Phone to Phone)
+ | 	    (phone to server, displayed in Ticker or Marquee)
+ |	
+ |______TEXT CHAT (online)
+ |		  (will check for user availability)
+ | 		  (fo2fo)
+ |		  (fo2s)
+ |
+ |______VOICE Mail (offline)
+ |		   (fo2fo)
+ |		   (fo2s)
+ |
+ |______VIDEO Mail (offline)
+ |  		   (fo2fo)
+ |		   (fo2s)
+ |
+ |______Wireless Remote (online) (Live - will also send screenshots to handset)
+ |				      (fo2s)
+ | 				      (must be able to send keyboard and mouse events to
+ |                             server viewing in the phone)
+ |
+ |______Media Player Remote (online) (still images of all formats, animated GIFs, songs & videos)
+ | 			   (fo2s)
+ |			   features: 1> play a particular song on server by browsing list of songs
+ | 					 2> play a particular song on server by entering song number
+ | 					 3> search for particular song by song number, song name
+ | 					 4> create a playlist and store it on server in (.wpl) format.
+ |					 5> play a particular playlist on server by browsing
+ | 					 6> get back status on handset about (current song, duration,
+ | 					    and any additional information about media)
+ | 					 7> player interface will have play, next track, previous track,
+ | 					    volume increase, volume decrease, pause, stop, mute, unmute,
+ | 					    repeat, shuffle, fullscreen or windowed
+ |
+ |______In-House Stock Tracker(fo2s)(must be able to update raw material through phone)
+ |				  (s2fo)(phone will receive automatic updates from server 
+ |	                     regarding the raw material, stock in hand, quantity etc)
+ |
+ |______myMoney Tracker (transferring day to day expenses and incomes to server)
+ |  		    (multiple RMS-datastores as per month, year format)
+ | 		    (Graphical Report Generation, BarChart, PieChart etc)
+ | 		    
+ |
+ |______Third Eye (view live images captured by security camera on handset)
+ | 			(will also include online Administration of Cameras)
+ |
+ |
+ |______Normal object push (OPP) the server application must be able to process
+ |      and open the object as per the file type (txt,rtf,doc,xls,ppt,jpg,gif,bmp,3gp,pdf)
+ | 	  (fo2s)
+ | 
+ |______More Ideas (...)invited

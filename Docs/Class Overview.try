@@ -1,0 +1,250 @@
+Pocket Gizmo as on 18/08/2010
+
+=============================
+   Class Overview (jar file)
+=============================
+
+how the application flow will be:
+
+1> start midlet
+2> login screen
+3> start bluetooth listener thread (BT)
+4> BT will start (QT try this or else) start command queue thread (QT) independently
+5> BT will post the data received to command queue
+6> QT will retrieve data from command queue and start processing
+   and send to appropriate class.
+
+1> the mobile application(ma) is in running state.
+2> the ma receives data via bluetooth. The receiving of data will be taken care by
+   bluetooth manager(BM). this will be a background thread which will keep on 
+   running till the life time of ma.
+3> the BM will send the data received to the queue manager.
+the data will be stored in ma's queue.
+4> the BM will retrieve the data from the queue one by one and 
+   start processing it and forward it to appropriate class.
+5> ....
+
+Command Protocol
+MainApp.MiniApp.CommandContent
+
+eg.
+1> PoGz.WR.0019AB11FF#shutdown
+2> 
+
+
+
+RMS files
+1> DevicesDB // contains all devices & servers names, addresses
+2> SMS_DB // contains unread message body received 
+3> FailedDB // any command, messages, operations failed will be stored 
+		to process again in future. like SMS, Voice Mail, Video Mail failed
+		due to remote device or server unavailability. it will be stored in 
+		FailedDB and will be retrieved by QM in the future and will be deleted
+		once it is processed.
+4> myMoney012010(January), myMoney062010(June) and so on as monthly basis.
+
+
+
+
++-----------------------------------+
+|    1> class BluetoothManager(BM)  |
++-----------------------------------+
+// the main bluetooth gateway, this class will take care of all request 
+processing and sending to the appropriate classes for further processing
+
+1> String [] BM_detectPhoneDevices();	//this will only detect phones with Pocket Gizmo
+							  installed and presently running
+2> String [] BM_detectServerDevices();	//this will only detect server devices with server
+							  application installed and presently running
+
+	how the above functions work ?
+	Once the bluetooth starts searching for devices, as soon as it finds first device, 
+	it will send a handshaking request and the server or the phone at the other end 
+      should send an acknowledgement.
+	this concept will be very useful to check at the other end whether the Pocket Gizmo
+      application exists or not.
+	this concept is already developed in PC REMOTE project.
+
+
+3> void BM_addDevicesToDB();		//add device(s) to existing RMS
+4> void BM_deleteDevicesFromDB();	//delete device(s) from existing RMS	
+5> String [] BM_returnListOfDevicesInDB();	//return a string list of all 
+								  devices stored in RMS
+6> boolean BM_checkDevicesDBstatus();		//checks if the RMS is full as per the limit.
+
+7> void BM_startListener();
+	this will start the background thread which will keep listening all 
+      (sending acknowledgements & receiving incoming data and forwarding the same to 
+	appropriate classes for further processing will take place here)
+	incoming bluetooth requests and events.
+	should be strong and crash proof and proper thread handling (thread safe) 
+	must be taken care of.
+
+8> void BM_sendToCommandQueue();	//send received command to command queue
+
+9> int BM_getSizeOfcommandQueue();	//get the size of command queue (no of commands in queue)
+
+10> void BM_clearCommandQueue();	//will empty the command queue
+
+11> 
+
+
+
++-----------------------------------+
+|	2> class RMSManager (RM)      |
++-----------------------------------+
+// will contain all Record management functions
+
+1> DevicesDB // contains all devices & servers names, addresses
+2> SMS_DB // contains unread message body received 
+3> FailedDB // any command, messages, operations failed will be stored 
+		to process again in future. like SMS, Voice Mail, Video Mail failed
+		due to remote device or server unavailability. it will be stored in 
+		FailedDB and will be retrieved by QM in the future and will be deleted
+		once it is processed.
+4> myMoney012010(January), myMoney062010(June) and so on as monthly basis.
+
+1> void RM_openDevicesDB();
+
+2> void RM_openSMS_DB();
+
+3> void RM_openFailedDB();
+
+4> void RM_openMyMoneyDB(String strMonth,String strYear);
+
+5> void RM_searchForRecordsMyMoney(String strSearchKey);
+
+6> void 
+
+
++-----------------------------------+
+| 3> class CommandQueueManager (QM) |
++-----------------------------------+
+// will store all bluetooth commands recevied in the Queue
+//
+
+
+
++-----------------------------------+
+| 4> class PocketCommunicator (PC)  |
++-----------------------------------+
+	(Bluetooth) SMS / TEXT CHAT / VOICE Mail / VIDEO Mail
+The processing of all the above mentioned applications will take place in this class.
+
+1> String [] PC_detectOnlineDevices(); 
+   (will indirectly call BM_detectPhoneDevices() & BM_detectServerDevices())
+	//no need to rewrite the function
+	//returns a list of all online devices with Pocket Gizmo presently running.
+
+***************************************************************************************
+SMS functions: (offline)
+
+2> void createSMS();
+	// starts and records input from keypad, the UI part
+3> void PC_sendSMSToPhone(String [] strPhoneDevices,String strMessage,
+				  int iForeColor,int iBackColor);
+	//Send offline messages to remote phone devices stored in DB.
+4> void PC_sendSMSToServer(String [] strServerDevices,String strMessage,
+				   int iForeColor,int iBackColor,int iScrollSpeed);
+	//Send offline messages to remote server devices stored in DB.
+5> void PC_sendSMSToAllRemoteDevices(String [] strServerDevices,String strMessage,
+						 int iForeColor,int iBackColor);
+	//the scroll speed will be default
+5> void PC_storeUnreadSMSToDB();
+	//if messages displayed in the box are not opened and read then 
+	  they will be stored to DB and can be accessed later. Once read the messages
+	  will be automatically deleted from DB.
+6> void PC_showSMSAlert();
+	//this function will be called by the listener as soon as it receives 
+	  any message.
+***************************************************************************************
+TEXT CHAT functions: (online)
+
+7> void PC_createChat();
+	// starts and records input from keypad, the UI part
+8> void PC_sendChatTxtToPhone(String [] strPhoneDevices,String strMessage,
+				      int iForeColor,int iBackColor);
+	//Send online messages to remote phone devices stored in DB.
+9> void PC_sendChatTxtToServer(String [] strServerDevices,String strMessage,
+					 int iForeColor,int iBackColor);
+	//Send online messages to remote server devices stored in DB.
+
+10> void PC_showChatAlert();
+	// this function will be called by the listener as soon as it receives.
+***************************************************************************************
+VOICE MAIL functions: (offline)
+11> void PC_createVoiceMail();
+	// starts and records input from MIC, the UI part
+12> void PC_sendVoiceMailToPhone(String [] strPhoneDevices,OutputStream osRecordedStream);
+	//send recorded voice mail to remote phone devices stored in DB.
+13> void PC_sendVoiceMailToServer(String [] strServerDevices,OutputStream osRecordedStream);
+	//send recorded voice mail to remote server devices stored in DB.
+14> void PC_showVoiceMailAlert();
+	// this function will be called by the listener as soon as it receives.
+***************************************************************************************
+VIDEO MAIL functions: (offline)
+
+15> void PC_createVideoMail();
+	// starts and records input from CAMERA, the UI part
+16> void PC_sendVideoMailToPhone(String [] strPhoneDevices,OutputStream osRecordedStream);
+	//send recorded video mail to remote phone devices stored in DB.
+17> void PC_sendVideoMailToServer(String [] strServerDevices,OutputStream osRecordedStream);
+
+
++-----------------------------------+
+|    5> class Wireless Remote(WR)  |
++-----------------------------------+
+// functions for keyboard and mouse input
+
+1> void WR_startKeyboard();
+2> void WR_startMouse();
+
+3> void WR_sendKeycodeToServer(String strServerDevice,int keyCode);
+
+4> void WR_sendMouseMoveToServer(String strServerDevice);
+5> void WR_sendMouseLeftClickToServer(String strServerDevice);
+6> void WR_sendMouseRightClickToServer(String strServerDevice);
+
++-------------------------------------------+
+|6> Class MediaPlayerRemote(MPR)  |
++-------------------------------------------+
+// functions to control Windows Media Player and manage playlist 
+
+1> void MPR_startMediaStarter();
+	// this will start media player UI on phone device and
+	   also on the server. On the server it will start the
+	   customized windows media player.
+2> void MPR_sendCommandToServer(String strServerDevice,String strCommand);
+	// command like play, stop, pause, volume, balance, mute etc.
+3> void MPR_playSong(String strSongNumber);
+	// the song number list will be stored on server which will
+	   be permanent and wont be changeable.
+	   A particular song number will always point to the same song
+	   every time.
+
+4> void MPR_savePlaylist(String strPlaylistName,String [] strSongNumbers)
+5> void MPR_loadPlaylist(String strPlaylistName);
+	
++-----------------------------------------+
+|    7> Class In-HouseStockTracker (ST) 	|
++-----------------------------------------+
+// functions to search, get status of stock, stocks in hand etc alerts
+
++-----------------------------------+
+|    8> Class myMoneyTracker (MT) 	|
++-----------------------------------+
+// record daily expenses, incomes, search old expenses etc report
+					   generation 
+
++-----------------------------------+
+|    9> Class ThirdEye (TE) 		|
++-----------------------------------+
+// camera functions and camera administration
+
++-----------------------------------+
+|    10> Class FileExplorer (SL) 	|
++-----------------------------------+
+// will be used to explore local and remote file system
+for coping files from source to target
+for deleting, moving, renaming etc.
+for sending files for processing using (OPP)

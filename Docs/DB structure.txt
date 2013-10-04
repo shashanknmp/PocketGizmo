@@ -1,0 +1,45 @@
+DB Structure on Server Machine
+
+[Stock Tracker]
+Tables: 
+ 1> Product_Master
+ 2> Product_Types
+ 3> Store_Master
+ *> Stock_Master
+
+
+	1>Product_Master (eg trouser, rice etc)
+a>product_id (pk, not null)
+b>type_no (fk, predefined pointing to product_types table)
+c>product_image (char *path)
+d>product_desciption (null)
+
+	2>Product_Types (eg Food, Clothes etc)
+a>type_no (pk, not null)
+b>type_description (char *, null)
+c>
+
+	3>Store_Master (eg cupboard, bag, etc)
+a>store_id (pk, not null)
+b>store_name (char *, not null)
+c>store_desciption (null)
+d>store_image (char *path)
+
+	2>Stock_Master
+Serial No
+Purchase Date
+Item Name
+Item Quantity
+Item Type
+Price (Rs)
+Quantity Left (Present status)
+
+
+
+[myMoney Tracker]
+
+
+[Third Eye]
+
+and logs must be generated for each every small operation 
+done by server or client @ server side.

@@ -1,0 +1,27 @@
+
+(to remote m/c)
+rec expense 
+rec income
+
+1)  *#$mac_id accoumt_no trans_type trans_date trans_time trans_desc trans_amt trans_category
+2)  *#$mac_id|account_no|trans_type|trans_date|trans_time|trans_desc|trans_amt|trans_category$#*
+----------------------------------------------------------------------------------------------
+
+
+(to remote m/c)
+get balance
+update balance 
+
+*#$mac_id trans_type trans_date trans_time cash_in_hand cash_in_bank
+----------------------------------------------------------------------------------------------
+
+
+(to myMoney_Bal_DB)
+get balance
+acc_no,update_date,update_time,update_amount
+
+
+update balance
+
+
+
