@@ -24,7 +24,7 @@
             android:name="com.pg.PocketGizmo.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" >	
         </activity>
         <activity
             android:name="com.pg.PocketGizmo.MainMenuActivity"
