@@ -32,6 +32,7 @@ import android.widget.TimePicker;
 import com.pg.R;
 import com.pg.PocketGizmo.PocketGizmoApplication;
 import com.pg.adapters.MMYspinnerAdapter;
+import com.pg.data.All_Transaction_Master;
 import com.pg.data.Category_Master;
 import com.pg.data.Payment_Modes;
 
@@ -145,8 +146,14 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
 		getCurrentDateTime();
 		updateCurrentDateTime();
 
-		getPaymentModes();
-		getCategories();
+		tempDisplayAllTransactions();
+		// getPaymentModes();
+		// getCategories();
+	}
+
+	private void tempDisplayAllTransactions() {
+		All_Transaction_Master objData = new All_Transaction_Master(this);
+		objData.getAllRecordsOfField(All_Transaction_Master._id);
 	}
 
 	private void getPaymentModes() {
@@ -250,16 +257,15 @@ public class MMY_ExpenseIncome extends Activity implements OnTouchListener,
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		if (v == btnSave) {	
+		if (v == btnSave) {
 			addRecord();
 		} else if (v == btnCancel) {
 			finish();
 		}
 	}
-	
-	private void addRecord()
-	{
-		
+
+	private void addRecord() {
+
 	}
 
 	private void getApplicationObject() {

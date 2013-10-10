@@ -1,11 +1,8 @@
 package com.pg.PocketGizmo;
 
-import java.util.logging.LogManager;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -23,8 +20,6 @@ import android.widget.ViewFlipper;
 
 import com.pg.R;
 import com.pg.alertdialogs.ConnectionDialog;
-import com.pg.data.DBAdapter_OLD_DO_NOT_USE;
-import com.pg.data.Login_Master;
 import com.pg.data.PocketGizmoDBOpenHelper;
 
 public class LoginActivity extends Activity implements OnClickListener {
